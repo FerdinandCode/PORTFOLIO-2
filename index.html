@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Experienced Frontend Developer portfolio showcasing professional projects, technical skills, work experience.">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+      <!--=============== REMIXICONS - Insert link for icons ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+
+      <!--=============== CSS ===============-->
+
+
+    <title>Gasien Ferdinand - Resume Portfolio</title>
+    <style>
+      /*=============== GOOGLE FONTS - Insert link for typography ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(90, 82%, 68%);
+  --first-color-alt: hsl(90, 78%, 64%);
+  --title-color: hsl(0, 0%, 4%);
+  --black-color: hsl(227, 25%, 11%);
+  --body-color: hsl(260, 9%, 94%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 3rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media (width >= 1150px) {
+  :root {
+    --biggest-font-size: 4.5rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--title-color);
+}
+
+input,
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 2rem;
+}
+
+.section__title {
+  width: max-content;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: 1.25rem;
+  padding: 0.25rem 1rem 0.25rem;
+  background-color: var(--first-color);
+  color: var(--title-color);
+}
+
+.main {
+  overflow: hidden;
+}
+
+/* Show & hide sections */
+.main__area [data-content]{
+display: none;
+opacity: 0;
+transform: translateY(1rem);
+transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.main-active[data-content]{
+  display: grid;
+}
+
+.main-active[data-content]{
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Active button */
+.profile__button.main-active{
+  background-color: var(--first-color);
+  transition: background-color 0.3s ease;
+}
+
+/*============ PROFILE ============*/
+.profile__container{
+  padding-top: 1.5rem;
+}
+.profile__image{
+   width: 240px;
+  height: 340px;
+  border: 3px dashed var(--black-color);
+  transform: rotate(5deg);
+  margin: 0 auto 2rem;
+  display: grid;
+}
+
+.profile__img{
+  width: 200px;
+  transform: translateY(0.5rem) rotate(-5deg);
+  justify-content: center;
+  align-self: flex-end;
+}
+.profile__greeting{
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-regular);
+}
+.profile__name{
+  text-align: center;
+  font-size: var(--biggest-font-size);
+}
+.profile__buttons{
+  display: flex;
+  column-gap: 0.5rem;
+  justify-self: center;
+  margin-block: 1rem 3rem;
+  border: 1px solid var(--black-color);
+  box-shadow: 0 4px 0 var(--black-color);
+  border-radius: 4rem;
+  padding: 0.25rem;
+}
+.profile__button{
+  background-color: var(--body-color);
+  color: var(--title-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4rem;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+.profile__button:hover{
+  background-color: var(--first-color-alt);
+}
+
+/*============ SKILLS ============*/
+.skills__list{
+  list-style: initial;
+  padding-left: 2rem;
+}
+
+/*============ TOOLS ============*/
+.tools__list{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+.tools__items{
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  cursor: default;
+   transition: transform 0.4s;
+}
+.tools__item:hover{
+transform: translateX(0.5rem);
+}
+.tools__img{
+  width: 1rem;
+}
+.tools__name{
+  font-size: var(--small-font-size);
+}
+
+/*============ EXPERIENCE ============*/
+
+.experience__content{
+  display: grid;
+  row-gap: 2rem;
+}
+.experience__titles{
+  display: grid;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.experience__titles :is(p, h3){
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+.experience__list{
+  list-style: initial;
+  padding-left: 2rem;
+
+}
+/*============ EDUCATION ============*/
+.education__list{
+  display: grid;
+  row-gap: 1.5rem;
+}
+.education__item{
+  display: grid;
+  row-gap: 0.25rem;
+}
+.education__item :is(p, h3){
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+/*============ PROJECTS ============*/
+
+.projects__link{
+  display: block;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.projects__img{
+  transition: transform 0.4s;
+}
+.projects__link:hover .projects__img{
+  transform: scale(1.1);
+}
+
+.projects__name{
+  font-size: var(--normal-font-size);
+  margin-bottom: 0.5rem;
+}
+/*============ FOOTER ============*/
+
+.footer__container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  padding-block: 2rem;
+}
+.footer__link{
+display: flex;
+align-items: center;
+column-gap: 0.5rem;
+color: var(--title-color);
+transition: transform 0.4s;
+}
+.footer__link i{
+  font-size: 1.5rem;
+}
+.footer__link span{
+  font-weight: var(--font-medium);
+}
+.footer__link:hover{
+  transform: translateY(-0.5rem);
+}
+/*============ BREAKPOINTS ============*/
+/* For medium devices <> */
+@media (width >= 760px){
+  .profile__content{
+    grid-template-columns: repeat(2,350px);
+  }
+}
+
+/* For large devices <> */
+@media (width >= 1150px){
+  .main__content{
+    max-width: 1120px;
+    margin: 4rem auto;
+    padding-inline: 10rem;
+    box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.1);
+  }
+  .main__group{
+    display: grid;
+    grid-template-columns: 320px 530px;
+  }
+  .main__left{
+    border-right: 3px dashed var(--black-color);
+  }
+  .section{
+    padding-block: 2.5rem;
+  }
+  .profile__container{
+    grid-template-columns: 540px 260px;
+    column-gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+  }
+  .profile__data{
+    order: -1;
+  }
+  .profile__greeting,
+  .profile__name{
+    text-align: initial;
+  }
+  .profile__buttons{
+    justify-self: flex-start;
+  }
+  .profile__image{
+    margin: 0;
+  }
+  .tools__list{
+    flex-direction: column;
+    align-items: initial;
+  }
+  .tools__item{
+    column-gap: 0.5rem;
+  }
+  .tools__img{
+    width: 1.5rem;
+  }
+  .tools__name{
+    font-size: var(--normal-font-size);
+  }
+  .experience__titles{
+    grid-template-columns: 120px max-content;
+    column-gap: 2rem;
+  }
+  .experience__list{
+    padding-left: 10.5rem ;
+  }
+  .education__item{
+    grid-template-columns: 115px max-content;
+    column-gap: 2.5rem;
+  }
+  .footer__container{
+    justify-content: space-between;
+    padding-block: 3rem;
+  }
+}
+    </style>
+  </head>
+  <body>
+      <!--============ MAIN ============-->
+      <main class="main">
+         <div class="main__content">
+            <!--============ PROFILE ============-->
+            <section class="profile section">
+               <div class="profile__container container grid">
+                  <div class="profile__image">
+                    <img src="img/profile.png" class="profile__img">
+                  </div>
+                  <div class="profile__data">
+                     <h3 class="profile__greeting">Hello I’m</h3>
+                   <h1 class="profile__name">GASIEN Ferdinand</h1>
+
+                   <div class="profile__buttons">
+                     <button class="profile__button main-active" data-target="#info">Information</button>
+                     <button class="profile__button" data-target="#projects">Projects</button>
+                   </div>
+
+                   <h2 class="section__title">Profile</h2>
+                   <p class="profile__description">
+                    I am a passionate Software Engineer and a junior Full-stack Developer dedicated
+                    to building modern, responsive, and user-friendly digital experiences. I combine
+                    creativity, technical expertise, and problem-solving skills to transform ideas into functional
+                    websites and innovative software solutions.
+                    With a strong interest in web development, UI/UX design, and emerging technologies,
+                    I strive to create impactful digital products that help business grow and stand out
+                    in the digital world
+                   </p>
+                    
+                  </div>
+               </div>
+            </section>
+
+            <div class="main__area">
+               <div class="main__group main-active " data-content id="info">
+                  <div class="main__left">
+                     <!--============ SKILLS ============-->
+                     <section class="skills section">
+                       <div class="skills__container container">
+                        <h2 class="section__title">Skills</h2>
+
+                        <ul class="skills__list">
+                         <li>Frontend Development</li>
+                         <li>HTML, CSS & Javascript</li>
+                         <li>Php & Laravel</li>
+                         <li>Mysql Database</li>
+                         <li>Figma, & Adobe Photoshop</li>
+                         <li>UI/UX Design</li>
+                         <li>Git & Github</li>
+                         <li>Responsive Web Design</li>
+                        </ul>
+                       </div>
+                     </section>
+
+                     <!--============ TOOLS ============-->
+                     <section class="tools section">
+                        <div class="tools__container container">
+                           <h2 class="section__title">Tools & Technologies</h2>
+
+                           <ul class="tools__list">
+                              <li class="tools__item">
+                                 <img src="img/tools-9.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Html</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-11.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Css</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-2.svg" alt="" class="tools__img">
+                                 <span class="tools__name">JavaScript</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-12.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Laravel</span>
+                              </li>
+                              
+                                <li class="tools__item">
+                                 <img src="img/tools-10.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Mysql</span>
+                              </li>
+
+                                <li class="tools__item">
+                                 <img src="img/tools-4.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Git</span>
+                              </li>
+
+                                <li class="tools__item">
+                                 <img src="img/tools-3.svg" alt="" class="tools__img">
+                                 <span class="tools__name">GitHub</span>
+                              </li>
+                              
+                                <li class="tools__item">
+                                 <img src="img/tools-6.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Node Js</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-7.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Ilustrator</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-13.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Photoshop</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-8.svg" alt="" class="tools__img">
+                                 <span class="tools__name">Figma</span>
+                              </li>
+                                <li class="tools__item">
+                                 <img src="img/tools-1.svg" alt="" class="tools__img">
+                                 <span class="tools__name">React</span>
+                              </li>
+                           </ul>
+                        </div>
+                     </section>
+                  </div>
+      
+                  <div class="main__right">
+                     <!--============ EXPERIENCE ============-->
+                     <section class="experience section">
+                        <div class="experience__container container">
+                           <h2 class="section__title">Experience</h2>
+
+                           <div class="experience__content">
+                              <article class="experience__data">
+                                 <div class="experience__titles">
+                                    <p>Remote /<br> 2025 - Present</p>
+                                    <h3>Software Engineer & Creative Designer</h3>
+                                 </div>
+
+                                 <ul class="experience__list">
+                                    <li>Developed responsive and user-friendly websites using HTML,CSS Javascript, and
+                                      modern web development technologies.
+                                    </li>
+                                    <li>Designed professional brand identities, UI/UX interfaces, and digital experience for personal
+                                      and client project
+                                    </li>
+                                    <li>Collaborate with clients to transform ideas into functional, visually engaging, and impactful
+                                      digital solutions
+                                    </li>
+                                 </ul>
+                              </article>
+
+                                <article class="experience__data">
+                                 <div class="experience__titles">
+                                    <p> 3 Months  Intenship</p>
+                                    <h3>Creative Lead </h3>
+                                 </div>
+
+                                 <ul class="experience__list">
+                                    <li>Built and designed creative digital projects, strengthening skills in frontend development, 
+                                      UI/UX design, and visual communication.</li>
+                                    <li>Created professional graphics, logos, and marketing materials using photoshop,Figma, and Canva</li>
+                                 </ul>
+                              </article>
+                           </div>
+                        </div>
+                     </section>
+
+                     <!--============ EDUCATION ============-->
+                     <section class="education section">
+                        <div class="education__container container">
+                           <h2 class="section__title">Education</h2>
+
+                           <ul class="education__list">
+                             
+                               <li class="education__item">
+                                 <p>Class of 2025/2026</p>
+                                 <h3>Web Programming & Programming</h3>
+                              </li>
+                               <li class="education__item">
+                                 <p>Class of 2026</p>
+                                 <h3>UX/UI Design & User Experience</h3>
+                              </li>
+                               <li class="education__item">
+                                 <p>Class of 2026/2027</p>
+                                 <h3>Higher National Diploma (HND) in Software Engineering</h3>
+                              </li>
+                           </ul>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+
+               <!--============ PROJECTS ============-->
+               <section class="projects section" data-content id="projects">
+                  <div class="projects__container container">
+                     <h2 class="section__title">Jobs</h2>
+
+                     <div class="project__content grid">
+                        <article class="projects__card">
+                           <a href="#" target="_blank" class="projects__link">
+                              <img src="img/project-1.jpg" alt="" class="projects__img">
+                           </a>
+
+                           <h3 class="projects__name">Modern Design Project</h3>
+                           <p>
+                        Professional website for a company, using HTML, CSS, JavaScript,
+                         Figma, Database and others.
+                           </p>
+                        </article>
+
+                        <article class="projects__card">
+                           <a href="#" target="_blank" class="projects__link">
+                              <img src="img/project-2.jpg" alt="" class="projects__img">
+                           </a>
+
+                           <h3 class="projects__name">Modern Design Project</h3>
+                           <p>
+                        Professional website for a company, using HTML, CSS, JavaScript,
+                         Figma, Database and others.
+                           </p>
+                        </article>
+
+                        <article class="projects__card">
+                           <a href="#" target="_blank" class="projects__link">
+                              <img src="img/project-3.jpg" alt="" class="projects__img">
+                           </a>
+
+                           <h3 class="projects__name">Modern Design Project</h3>
+                           <p>
+                        Professional website for a company, using HTML, CSS, JavaScript,
+                         Figma, Database and others.
+                           </p>
+                        </article>
+
+                        <article class="projects__card">
+                           <a href="#" target="_blank" class="projects__link">
+                              <img src="img/project-4.jpg" alt="" class="projects__img">
+                           </a>
+
+                           <h3 class="projects__name">Modern Design Project</h3>
+                           <p>
+                        Professional website for a company, using HTML, CSS, JavaScript,
+                         Figma, Database and others.
+                           </p>
+                        </article>
+
+                        <article class="projects__card">
+                           <a href="#" target="_blank" class="projects__link">
+                              <img src="img/project-5.jpg" alt="" class="projects__img">
+                           </a>
+
+                           <h3 class="projects__name">Modern Design Project</h3>
+                           <p>
+                        Professional website for a company, using HTML, CSS, JavaScript,
+                         Figma, Database and others.
+                           </p>
+                        </article>
+                     </div>
+                  </div>
+               </section>
+            </div>
+
+            <!--============ FOOTER ============-->
+            <footer class="footer">
+               <div class="footer__container container">
+                  <a href="mailto:gasienferdinand26@mail.com" target="_blank" class="footer__link">
+                     <i class="ri-mail-line"></i>
+                     <span>gasienferdinand26@mail.com</span>
+                  </a>
+
+                      <a href="tel:+237675765432" target="_blank" class="footer__link">
+                        <i class="ri-phone-line"></i>
+                     <span>(+237) 675-76-54-32</span>
+                  </a>
+
+                      <a href="https://linkedin.com/" target="_blank" class="footer__link">
+                        <i class="ri-linkedin-box-line"></i>
+                     <span>linkedin.com/GASIEN Ferdinand Kehbila</span>
+                  </a>
+
+                  <a href="https://wa.me/237654094820" target="_blank" class="footer__link">
+                    <i class="ri-whatsapp-line"></i>
+                    <span>Contact me on WhatsApp</span>
+                  </a>
+               </div>
+            </footer>
+         </div>
+      </main>
+
+      <!--=============== SCROLLREVEAL - Insert link for animations ===============-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+
+      <!--=============== MAIN JS ===============-->
+      <script>
+         /*=============== TABS BUTTONS WITH SMOOTH ANIMATION ===============*/ 
+const tabs = document.querySelectorAll('[data-target]'),
+      tabContents = document.querySelectorAll('[data-content]')
+
+tabs.forEach((tab) => {
+   tab.addEventListener('click', () => {
+      const targetSelector = tab.dataset.target,
+        targetContent = document.querySelector(targetSelector)
+
+      // Avoid re-triggering if the same tab is clicked
+    if(!targetContent || targetContent.classList.contains('main-active')) return
+
+      // Switch active button
+      tabs.forEach((t) => t.classList.remove('main-active'))
+      tab.classList.add('main-active')
+
+    // Switch content immediately. Waiting for transitionend prevented the
+    // Projects tab from opening because the hidden content has no transition.
+    tabContents.forEach((content) => content.classList.remove('main-active', 'show'))
+    targetContent.classList.add('main-active', 'show')
+   })
+})
+
+
+/*=============== INITIAL FADE IN ON LOAD ===============*/
+
+window.addEventListener('load', () => {
+   const initialContent = document.querySelector('[data-content].main-active')
+   requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+         initialContent.classList.add('show')
+      })
+   })
+})
+/*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+    origin: 'right',
+    distance: '200px',
+    duration: 1500,
+    delay: 300,
+    easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+   // reset: true, // animation repeat
+
+})
+sr.reveal(`.main__content`,{origin: 'top'})
+sr.reveal(`.profile`, {delay: 600})
+sr.reveal(`.profile__image`, {rotate: {z: -55}, scale: 0, delay: 900})
+sr.reveal(`.profile__greeting`, {delay: 900})
+sr.reveal(`.profile__name`,{delay:1100})
+sr.reveal(`.profile__buttons`, {delay: 1300, scale: 0})
+sr.reveal(`.profile__data .section__title`, {delay: 1500})
+sr.reveal(`.profile__description`, {delay: 1700})
+sr.reveal(`.main__area`, {origin: 'left', delay: 2000})
+
+        </script>
+      </body>
+</html>
